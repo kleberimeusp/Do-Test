@@ -9,6 +9,7 @@ import org.mockito.MockitoAnnotations;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -31,12 +32,12 @@ public class PedidoServiceTest {
         MockitoAnnotations.openMocks(this);
 
         pedido = new Pedido();
-        pedido.setNumeroControle(Long.valueOf("12345"));
+        pedido.setNumeroControle("12345");
         pedido.setNomeProduto("Produto Exemplo");
         pedido.setValorUnitario(BigDecimal.valueOf(100.0));
         pedido.setQuantidade(6);
         pedido.setCodigoCliente(1L);
-        pedido.setDataCadastro(LocalDate.now());
+        pedido.setDataCadastro(LocalDateTime.now());
     }
 
     @Test
@@ -97,7 +98,7 @@ public class PedidoServiceTest {
     @Test
     public void consultarPorNumeroControle_sucesso() {
         // Simular retorno do repositório
-        when(pedidoRepository.findByNumeroControle(Long.valueOf("12345")))
+        when(pedidoRepository.findByNumeroControle("12345"))
                 .thenReturn(Collections.singletonList(pedido));
 
         List<Pedido> pedidos = pedidoService.consultarPorNumeroControle("12345");
@@ -110,7 +111,7 @@ public class PedidoServiceTest {
     @Test
     public void consultarPorNumeroControle_vazio() {
         // Simular retorno vazio do repositório
-        when(pedidoRepository.findByNumeroControle(Long.valueOf("54321"))).thenReturn(Collections.emptyList());
+        when(pedidoRepository.findByNumeroControle("54321")).thenReturn(Collections.emptyList());
 
         List<Pedido> pedidos = pedidoService.consultarPorNumeroControle("54321");
 
@@ -120,10 +121,10 @@ public class PedidoServiceTest {
     @Test
     public void consultarPorDataCadastro_sucesso() {
         // Simular retorno do repositório
-        when(pedidoRepository.findByDataCadastro(LocalDate.now()))
+        when(pedidoService.consultarPorData(LocalDate.now()))
                 .thenReturn(Collections.singletonList(pedido));
 
-        List<Pedido> pedidos = pedidoService.consultarPorDataCadastro(LocalDate.now());
+        List<Pedido> pedidos = pedidoService.consultarPorData(LocalDate.now());
 
         assertFalse(pedidos.isEmpty());
         assertEquals(1, pedidos.size());
@@ -133,9 +134,9 @@ public class PedidoServiceTest {
     @Test
     public void consultarPorDataCadastro_vazio() {
         // Simular retorno vazio do repositório
-        when(pedidoRepository.findByDataCadastro(LocalDate.of(2022, 1, 1))).thenReturn(Collections.emptyList());
+        when(pedidoService.consultarPorData(LocalDate.of(2022, 1, 1))).thenReturn(Collections.emptyList());
 
-        List<Pedido> pedidos = pedidoService.consultarPorDataCadastro(LocalDate.of(2022, 1, 1));
+        List<Pedido> pedidos = pedidoService.consultarPorData(LocalDate.of(2022, 1, 1));
 
         assertTrue(pedidos.isEmpty());
     }

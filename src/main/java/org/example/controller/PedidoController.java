@@ -40,7 +40,7 @@ public class PedidoController {
     @GetMapping(value = "/data", produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
     public ResponseEntity<List<Pedido>> consultarPorDataCadastro(
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dataCadastro) {
-        List<Pedido> pedidos = pedidoService.consultarPorDataCadastro(dataCadastro);
+        List<Pedido> pedidos = pedidoService.consultarPorData(dataCadastro);
         if (pedidos.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }

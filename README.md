@@ -76,7 +76,7 @@ $ mvn clean install
 
 ## Modo de acesso ao sistema/módulo (urls)
 O acesso ao sistema pode ser efetuado por meio dos links abaixo:
-- Localhost: [Swagger máquina local](http://localhost:8080/swagger-ui/index.htm)
+- Localhost: [Swagger máquina local](http://localhost:8080/swagger-ui/index.html)
 - Desenvolvimento: [XXX](x)
 - Homologação: [XXX](x)
 - QA: [XXX](x)

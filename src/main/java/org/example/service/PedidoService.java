@@ -17,6 +17,7 @@ public class PedidoService {
     @Autowired
     private PedidoRepository pedidoRepository;
 
+
     // Método para criar um pedido
     public Pedido criarPedido(Pedido pedido) {
         // Verificar se o número de controle já existe
@@ -53,13 +54,16 @@ public class PedidoService {
         return pedidoRepository.findByNumeroControle(numeroControle);
     }
 
-    // Método para consultar pedidos por data de cadastro
-    public List<Pedido> consultarPorDataCadastro(LocalDate dataCadastro) {
-        return pedidoRepository.findByDataCadastro(dataCadastro);
-    }
 
     // Método para consultar todos os pedidos
     public List<Pedido> consultarTodos() {
         return pedidoRepository.findAll();
+    }
+
+
+    public List<Pedido> consultarPorData(LocalDate data) {
+        LocalDateTime dataInicio = data.atStartOfDay(); // Início do dia
+        LocalDateTime dataFim = data.atTime(23, 59, 59); // Final do dia
+        return pedidoRepository.findByDataCadastroBetween(dataInicio, dataFim);
     }
 }
