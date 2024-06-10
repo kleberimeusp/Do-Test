@@ -65,7 +65,7 @@ Acesse o container do banco de dados e importe o banco de dados.
 docker exec -it db bash
 mysql -u root -proot
 exit;
-mysql -uroot -proot navetse < /db/pedidosdb.sql
+mysql -uroot -proot pedidosdb < /db/pedidosdb.sql
 ```
 
 - Atualização todas as versões de um projeto modular com um único comando no **Maven**?
