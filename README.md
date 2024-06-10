@@ -8,7 +8,7 @@
 
 Sistema com finalidade de consultas de pedidos âmbito (Empresa Do-Test), atendo às necessidades apresentadas para o cliente.
 
-## Principais Tecnologias Usadas - APP (Microsserviços Backend)
+## Principais Tecnologias Usadas - API (Microsserviços Backend)
 
 ![Git](https://img.shields.io/badge/Git-2.40.0-%237159c1?style=for-the-badge&logo=git)
 ![Insomnia](https://img.shields.io/badge/insonmia-2023.1.0-%237159c1?style=for-the-badge&logo=insomnia)
@@ -77,6 +77,7 @@ $ mvn clean install
 ## Modo de acesso ao sistema/módulo (urls)
 O acesso ao sistema pode ser efetuado por meio dos links abaixo:
 - Localhost: [Swagger máquina local](http://localhost:8080/swagger-ui/index.html)
+  ![img.png](img.png)
 - Desenvolvimento: [XXX](x)
 - Homologação: [XXX](x)
 - QA: [XXX](x)
